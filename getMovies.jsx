@@ -71,8 +71,8 @@ function App() {
                     <ul class="list-group list-group-flush" style={{ listStyleType: "none" }} key={movie.id}>
                       <li class="list-group-item"><i class="fas fa-video"></i> Directed by {movie.director}</li>
                       <li class="list-group-item"><i class="fas fa-ticket-alt"></i> {movie.producer} Production</li>
-                      <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
                       <li class="list-group-item"><i class="fas fa-clock"></i> {movie.running_time} min</li>
+                      <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
                       <li class="list-group-item"><img src="./rt-cf.png" width="25px" /> {movie.rt_score}</li>
                       <li class="list-group-item"><i class="fas fa-image fa-lg"></i> <a href={movie.movie_banner} target="_blank" class="card-link">Movie Banner </a> <i class="fas fa-external-link-alt fa-xs"></i></li>
                     </ul>
