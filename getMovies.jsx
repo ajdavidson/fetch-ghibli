@@ -60,7 +60,8 @@ function App() {
                       <li class="list-group-item"><i class="fas fa-clock"></i> {movie.running_time} min</li>
                       <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
                       <li class="list-group-item"><img src={movie.rt_score<70 ? 'rt-sp.png': movie.rt_score<90 ? 'rt-f.png': 'rt-cf.png'} width="25px" /> {movie.rt_score}%</li>
-                      <li class="list-group-item"><i class="fas fa-image fa-lg"></i> <a href={movie.movie_banner} target="_blank" class="card-link">Movie Banner </a> <i class="fas fa-external-link-alt fa-xs"></i></li>
+                      <li class="list-group-item"> <a href={movie.movie_banner} target="_blank" class="btn btn-outline-secondary">
+                        <i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i></a> </li>
                     </ul>
                   </div>
                   <img class="card-img-left" src={movie.image} alt="Card image cap" height="500px" />
