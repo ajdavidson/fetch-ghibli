@@ -17,7 +17,7 @@
 
   <img alt="License" src="https://img.shields.io/github/license/ajdavidson/fetch-ghibli?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/ajdavidson/fetch-ghibli?color=56BEB8" /> -->
+  <img alt="Github issues" src="https://img.shields.io/github/issues/ajdavidson/fetch-ghibli?color=56BEB8" />
 
   <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/ajdavidson/fetch-ghibli?color=56BEB8" /> -->
 
@@ -46,23 +46,25 @@
 
 ## :dart: About ##
 
-Describe your project
+React project Fecthes remote data about Films from the Studio Ghibli public API.
+Uses the Axios promise-based HTTP Client for node.js and the browser.
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Promise based remote data fetch\
+:heavy_check_mark: Lists all films in Studio Ghibli API\
+:heavy_check_mark: Rotten Tomato score
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
+- [JavaScript](https://www.ecma-international.org/)
+- [CSS](https://www.w3.org/TR/CSS/#css)
+- [HTML](https://whatwg.org/)
+- [Babel](https://babeljs.io/)
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
 
 ## :white_check_mark: Requirements ##
 
@@ -78,12 +80,13 @@ $ git clone https://github.com/ajdavidson/fetch-ghibli
 $ cd fetch-ghibli
 
 # Install dependencies
-$ yarn
+$ http-server
 
 # Run the project
-$ yarn start
+$ Available on:
+  http://127.0.0.1:8080
+  http://localhost:8080
 
-# The server will initialize in the <http://localhost:3000>
 ```
 
 ## :memo: License ##
