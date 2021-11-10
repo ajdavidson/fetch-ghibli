@@ -4,6 +4,11 @@
     top:10px;
 
 }
+#toTop{
+    left: 10px;
+    bottom: 10px;
+    position: fixed;
+}
 /*!* Dropdown Button *!*/
 /*.dropbtn {*/
 /*    background-color: #04AA6D;*/
