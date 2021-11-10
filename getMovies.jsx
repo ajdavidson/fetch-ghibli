@@ -31,7 +31,7 @@ function App() {
       {/*))}*/}
       {/*</select>*/}
       <div className="dropdown">
-        <button className="dropbtn">Jump To...</button>
+        <button className="dropbtn">Jump To <i className="fas fa-film"></i></button>
         <div className="dropdown-content">
           {data.map(movie => (
 
