@@ -64,11 +64,11 @@ function App() {
                 <div class="row card-body">
                   <div class="col">
                     <div style={{ padding: "5px" }} class="text-white bg-secondary">
-                      <h5 class="card-title"> {movie.title}</h5>
+                      <h5 class="card-title"><i class="fas fa-film"></i> {movie.title}</h5>
                       <h6 class="card-subtitle mb-2 text-dark"> {movie.original_title} ({movie.original_title_romanised})</h6>
                     </div>
                     <p class="card-text">{movie.description}</p>
-                    <ul class="list-group list-group-flush" style={{ listStyleType: "none" }}>
+                    <ul class="list-group list-group-flush" style={{ listStyleType: "none" }} key={movie.id}>
                       <li class="list-group-item"><i class="fas fa-video"></i> Directed by {movie.director}</li>
                       <li class="list-group-item"><i class="fas fa-ticket-alt"></i> {movie.producer} Production</li>
                       <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
