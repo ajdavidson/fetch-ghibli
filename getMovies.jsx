@@ -77,7 +77,7 @@ function App() {
                       <li class="list-group-item"><i class="fas fa-image fa-lg"></i> <a href={movie.movie_banner} target="_blank" class="card-link">Movie Banner </a> <i class="fas fa-external-link-alt fa-xs"></i></li>
                     </ul>
                   </div>
-                  <img class="card-img-left" src={movie.image} alt="Card image cap" height="470px" />
+                  <img class="card-img-left" src={movie.image} alt="Card image cap" height="500px" />
                 </div>
               </div>
             </div>
