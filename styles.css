@@ -1,9 +1,9 @@
-/*#logo{*/
-/*    position: fixed;*/
-/*    left: 10px;*/
-/*    top:10px;*/
+#logo{
+    position: relative;
+    left: 100px;
+    top:10px;
 
-/*}*/
+}
 /*!* Dropdown Button *!*/
 /*.dropbtn {*/
 /*    background-color: #04AA6D;*/
