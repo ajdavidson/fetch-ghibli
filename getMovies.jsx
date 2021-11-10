@@ -23,29 +23,55 @@ function App() {
 
   return (
     <Container>
-      {/*<select >*/}
-      {/*{data.map(movie => (*/}
 
-      {/*    <option>{movie.title}</option>*/}
+      {/*<div className="dropdown">*/}
+      {/*  <button className="dropbtn">Jump To <i className="fas fa-film"></i></button>*/}
+      {/*  <div className="dropdown-content">*/}
+      {/*    {data.map(movie => (*/}
 
-      {/*))}*/}
-      {/*</select>*/}
-      <div className="dropdown">
-        <button className="dropbtn">Jump To <i className="fas fa-film"></i></button>
-        <div className="dropdown-content">
+      {/*        <a href={'#'+movie.id}>{movie.title}</a>*/}
+
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      {/*<div className="dropdown">*/}
+      {/*  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"*/}
+      {/*          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+      {/*    Dropdown button*/}
+      {/*  </button>*/}
+      {/*  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">*/}
+      {/*    <a className="dropdown-item" href="#">Action</a>*/}
+      {/*    <a className="dropdown-item" href="#">Another action</a>*/}
+      {/*    <a className="dropdown-item" href="#">Something else here</a>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
+      <p> </p>
+      <div className="dropdown dropright">
+        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+           data-toggle="dropdown" aria-expanded="false">
+          <i className="fas fa-film fa-2x"></i>
+        </a>
+
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {data.map(movie => (
-
-              <a href={'#'+movie.id}>{movie.title}</a>
-
-          ))}
+            <a className="dropdown-item" href={'#'+movie.id}>{movie.title}</a>
+            ))}
         </div>
       </div>
-        {/*{data.map(movie => (*/}
+      {/*<div className="dropdown-show">*/}
+      {/*  <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"*/}
+      {/*     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+      {/*    Dropdown link*/}
+      {/*  </a>*/}
 
-        {/*    <a href={'#'+movie.id}>{movie.title}</a>*/}
+      {/*  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">*/}
+      {/*        {data.map(movie => (*/}
 
-        {/*))}*/}
+      {/*            <a className="dropdown-item" href={'#'+movie.id}>{movie.title}</a>*/}
 
+      {/*        ))}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       {data.map(movie => (
 
         <React.Fragment>
