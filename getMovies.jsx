@@ -63,7 +63,7 @@ function App() {
               <div class="card">
                 <div class="row card-body">
                   <div class="col">
-                    <div style={{ padding: "5px" }} class="text-white bg-secondary">
+                    <div style={{ padding: "5px", backgroundColor: "#a6a6a6" }} class="text-white">
                       <h5 class="card-title"><i class="fas fa-film"></i> {movie.title}</h5>
                       <h6 class="card-subtitle mb-2 text-dark"> {movie.original_title} ({movie.original_title_romanised})</h6>
                     </div>
