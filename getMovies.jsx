@@ -23,7 +23,8 @@ function App() {
 
   return (
     <Container>
-      <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop">^</a>
+      <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop"><i
+          className="fas fa-angle-double-up"></i></a>
 
       <p> </p>
       <div className="dropdown dropright">
