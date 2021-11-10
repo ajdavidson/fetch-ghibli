@@ -53,7 +53,7 @@ Uses the Axios promise-based HTTP Client for node.js and the browser.
 
 :heavy_check_mark: Promise based remote data fetch\
 :heavy_check_mark: Lists all films in Studio Ghibli API\
-:heavy_check_mark: Rotten Tomato score
+:heavy_check_mark: Rotten Tomato score with dynamic icon
 
 ## :rocket: Technologies ##
 
