@@ -4,6 +4,7 @@ function App() {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
+  const [rtImg, setRTImg] = useState('rt-cf.png');
 
   console.log("Rendering App");
 
@@ -22,41 +23,10 @@ function App() {
 
   return (
     <Container>
-      {/* <input
-        type="text"
-        value={query}
-        onChange={event => setQuery(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={() => setUrl("https://ghibliapi.herokuapp.com/films/")}
-      >
-        Search
-      </button> */}
+
       {data.map(movie => (
-        // <ul style={{ listStyleType: "none" }} key={movie.id}>
-        //   <li>{movie.title}</li>
-        //   <li>{movie.original_title} ({movie.original_title_romanised})</li>
-        //   <li>{movie.release_date}</li>
-        //   <li><img src={movie.image} width="20%" /></li>
-        // </ul>
-        // <div class="card" style={{ width: "40%" }}>
-        //   <img class="card-img-left" src={movie.image} alt="Card image cap" />
-        //   <div class="card-body">
-        //     <h5 class="card-title">{movie.title}</h5>
-        //     <h6 class="card-subtitle mb-2 text-muted">{movie.original_title} ({movie.original_title_romanised})</h6>
-        //     <p class="card-text">{movie.description}</p>
-        //   </div>
-        //   <ul class="list-group list-group-flush">
-        //     <li class="list-group-item">Released: {movie.release_date}</li>
-        //     <li class="list-group-item">Runtime: {movie.running_time} min</li>
-        //     <li class="list-group-item">Rotten Tomato: {movie.rt_score}</li>
-        //   </ul>
-        //   <div class="card-body">
-        //     <a href={movie.movie_banner} target="_blank" class="card-link">Official Banner</a>
-        //     {/* <a href="#" class="card-link">Another link</a> */}
-        //   </div>
-        // </div>
+
+
         <React.Fragment>
           <div class="row">
             <div class="col">
@@ -73,7 +43,7 @@ function App() {
                       <li class="list-group-item"><i class="fas fa-ticket-alt"></i> {movie.producer} Production</li>
                       <li class="list-group-item"><i class="fas fa-clock"></i> {movie.running_time} min</li>
                       <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
-                      <li class="list-group-item"><img src="./rt-cf.png" width="25px" /> {movie.rt_score}%</li>
+                      <li class="list-group-item"><img src={movie.rt_score<70 ? 'rt-sp.png': movie.rt_score<90 ? 'rt-f.png': 'rt-cf.png'} width="25px" /> {movie.rt_score}%</li>
                       <li class="list-group-item"><i class="fas fa-image fa-lg"></i> <a href={movie.movie_banner} target="_blank" class="card-link">Movie Banner </a> <i class="fas fa-external-link-alt fa-xs"></i></li>
                     </ul>
                   </div>
@@ -82,10 +52,12 @@ function App() {
               </div>
             </div>
           </div>
-          <p></p>
+          <p>''</p>
         </React.Fragment>
+
       ))
       }
+
     </Container >
   );
 }
