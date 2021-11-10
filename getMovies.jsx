@@ -23,11 +23,33 @@ function App() {
 
   return (
     <Container>
+      {/*<select >*/}
+      {/*{data.map(movie => (*/}
+
+      {/*    <option>{movie.title}</option>*/}
+
+      {/*))}*/}
+      {/*</select>*/}
+      <div className="dropdown">
+        <button className="dropbtn">Jump To...</button>
+        <div className="dropdown-content">
+          {data.map(movie => (
+
+              <a href={'#'+movie.id}>{movie.title}</a>
+
+          ))}
+        </div>
+      </div>
+        {/*{data.map(movie => (*/}
+
+        {/*    <a href={'#'+movie.id}>{movie.title}</a>*/}
+
+        {/*))}*/}
 
       {data.map(movie => (
 
-
         <React.Fragment>
+          <div id={movie.id} />
           <div class="row">
             <div class="col">
               <div class="card">
@@ -64,4 +86,3 @@ function App() {
 // ========================================
 ReactDOM.render(<App />, document.getElementById("root"));
 
-//  // "https://hn.algolia.com/api/v1/search?query=redux"
