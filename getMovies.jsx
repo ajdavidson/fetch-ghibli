@@ -74,7 +74,7 @@ function App() {
                       <li class="list-group-item">Released: {movie.release_date}</li>
                       <li class="list-group-item">Runtime: {movie.running_time} min</li>
                       <li class="list-group-item"><img src="./rt-cf.png" width="25px" /> {movie.rt_score}</li>
-                      <li class="list-group-item"><a href={movie.movie_banner} target="_blank" class="card-link">Official Banner</a></li>
+                      <li class="list-group-item"><a href={movie.movie_banner} target="_blank" class="card-link">Movie Banner</a></li>
                     </ul>
                   </div>
                   <img class="card-img-left" src={movie.image} alt="Card image cap" height="470px" />
