@@ -1,8 +1,14 @@
+#logo{
+    position: fixed;
+    left: 35px;
+    top:5px;
+
+}
 /* Dropdown Button */
 .dropbtn {
     background-color: #04AA6D;
     color: white;
-    padding: 10px;
+    padding: 5px;
     font-size: 16px;
     border: none;
 }
