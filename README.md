@@ -47,12 +47,15 @@
 ## :dart: About ##
 
 React project Fecthes remote data about Films from the Studio Ghibli public API.
-Uses the Axios promise-based HTTP Client for node.js and the browser.
+Uses the Axios promise-based HTTP Client for node.js and the browser.  Bootstrap styling
+including a react-bootstrap Modal that uses dynamic data.  Handy page navigation using
+data and bootstrap.
 
 ## :sparkles: Features ##
 
 :heavy_check_mark: Promise based remote data fetch\
 :heavy_check_mark: Lists all films in Studio Ghibli API\
+:heavy_check_mark: react-bootstrap dynamic Modal\
 :heavy_check_mark: Rotten Tomato score with dynamic icon
 
 ## :rocket: Technologies ##
@@ -65,6 +68,7 @@ The following tools were used in this project:
 - [Babel](https://babeljs.io/)
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
+- [React-Bootstrap](https://react-bootstrap.github.io/)
 
 ## :white_check_mark: Requirements ##
 
