@@ -1,10 +1,23 @@
 function App() {
   const { useState, useEffect } = React;
-  const { Container } = ReactBootstrap;
+  const { Container,Button,Modal } = ReactBootstrap;
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
   const [rtImg, setRTImg] = useState('rt-cf.png');
+
+  const [show, setShow] = useState(false);
+  const [title, setTitle] = useState('My Title');
+  const [banner, setBanner] = useState('My Link');
+
+  const handleClose = () => setShow(false);
+
+  const handleShow = (title, banner) => {
+    setShow(true);
+    console.log('Banner Props:' + title);
+    setBanner(banner);
+    setTitle(title);
+  }
 
   console.log("Rendering App");
 
@@ -63,6 +76,16 @@ function App() {
                       <li class="list-group-item"> <a href={movie.movie_banner} target="_blank" class="btn btn-outline-secondary">
                         <i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i></a> </li>
                     </ul>
+                    <Button variant="primary" x={movie.title} onClick={()=> handleShow(movie.title,movie.movie_banner)}>
+                      Launch demo modal
+                    </Button>
+
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>{title}</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>{banner}</Modal.Body>
+                    </Modal>
                   </div>
                   <img class="card-img-left" src={movie.image} alt="Card image cap" height="500px" />
                 </div>
