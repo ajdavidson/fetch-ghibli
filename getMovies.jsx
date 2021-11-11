@@ -82,8 +82,6 @@ function App() {
                          }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
                       </Button></li>
                     </ul>
-
-
                   </div>
                   <img class="card-img-left" src={movie.image} alt="Card image cap" height="500px" />
                 </div>
