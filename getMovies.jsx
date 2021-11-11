@@ -76,15 +76,16 @@ function App() {
                       <li class="list-group-item"><img src={movie.rt_score<70 ? 'rt-sp.png': movie.rt_score<90 ? 'rt-f.png': 'rt-cf.png'} width="25px" /> {movie.rt_score}%</li>
                       {/*<li class="list-group-item"> <a href={movie.movie_banner} target="_blank" class="btn btn-outline-secondary">*/}
                       {/*  <i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i></a> </li>*/}
-                    </ul>
-                    <Button variant="outline-secondary" x={movie.title}
-                            onClick={()=>{
-                              handleShow(movie.title,movie.movie_banner);
-                              //alert('yep');
-                            }
+                      <li className="list-group-item">
+                        <Button variant="outline-secondary" x={movie.title}
+                           onClick={()=>{
+                           handleShow(movie.title,movie.movie_banner);
+                           //alert('yep');
+                           }
 
-                                }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
-                    </Button>
+                         }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
+                      </Button></li>
+                    </ul>
 
                     <Modal show={show} size="lg" onHide={handleClose}>
                       <Modal.Header closeButton>
