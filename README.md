@@ -46,7 +46,7 @@
 
 ## :dart: About ##
 
-React project Fecthes remote data about Films from the Studio Ghibli public API.
+React project Fetches remote data about Films from the Studio Ghibli public API.
 Uses the Axios promise-based HTTP Client for node.js and the browser.  Bootstrap styling
 including a react-bootstrap Modal that uses dynamic data.  Handy page navigation using
 data and bootstrap.
