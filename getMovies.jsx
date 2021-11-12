@@ -1,6 +1,6 @@
 function App() {
   const { useState, useEffect } = React;
-  const { Container, Button, Modal, Dropdown } = ReactBootstrap;
+  const { Container, Row, Col, Button, Modal, Dropdown, Image, Card, ListGroup, ListGroupItem } = ReactBootstrap;
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
@@ -36,23 +36,12 @@ function App() {
 
   return (
     <Container>
-      <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop"><i
-        className="fas fa-angle-double-up"></i></a>
+
+      <Button variant="outline-secondary" href="#top" id="toTop"><i
+        className="fas fa-angle-double-up"></i></Button>
+      <Image src="./Studio_Ghibli_logo.png" width="33%" />
 
       <p> </p>
-      {/* dropdown  */}
-      {/* <div className="dropdown dropright">
-        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-          data-toggle="dropdown" aria-expanded="false">
-          <i className="fas fa-film fa-2x"></i>
-        </a>
-
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          {data.map(movie => (
-            <a className="dropdown-item" href={'#' + movie.id}>{movie.title}</a>
-          ))}
-        </div>
-      </div> */}
       <Dropdown drop="end">
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
           <i className="fas fa-film fa-2x"></i>
@@ -70,7 +59,39 @@ function App() {
         <React.Fragment>
           {/* target  */}
           <div id={movie.id} />
-          <div class="row">
+          <Card style={{ width: "100%", height: "700px" }}>
+            <Row>
+
+              <Col sm={4} md={6}>
+                <Card.Body>
+                  <Card.Title><i class="fas fa-film"></i> {movie.title}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">{movie.original_title} ({movie.original_title_romanised})</Card.Subtitle>
+                  <Card.Text>
+                  </Card.Text>
+                </Card.Body>
+                <Card.Body>
+                  {movie.description}
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem><i class="fas fa-video"></i> Directed by {movie.director}</ListGroupItem>
+                  <ListGroupItem><i class="fas fa-video"></i> Directed by {movie.director}</ListGroupItem>
+                  <ListGroupItem><i class="fas fa-ticket-alt"></i> {movie.producer} Production</ListGroupItem>
+                  <ListGroupItem><i class="fas fa-clock"></i> {movie.running_time} min</ListGroupItem>
+                  <ListGroupItem><i class="fas fa-calendar-alt"></i> {movie.release_date}</ListGroupItem>
+                  <ListGroupItem><img src={movie.rt_score < 70 ? 'rt-sp.png' : movie.rt_score < 90 ? 'rt-f.png' : 'rt-cf.png'} width="25px" /> {movie.rt_score}%</ListGroupItem>
+                  <ListGroupItem><Button variant="outline-secondary" x={movie.title}
+                    onClick={() => {
+                      handleShow(movie.title, movie.movie_banner);
+                      //alert('yep');
+                    }
+                    }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
+                  </Button></ListGroupItem>
+                </ListGroup>
+              </Col>
+              <Col xs={4} md="auto" fluid><Card.Img height="699px" variant="top" src={movie.image} fluid /></Col>
+            </Row>
+          </Card>
+          {/* <div class="row">
             <div class="col">
               <div class="card">
                 <div class="row card-body">
@@ -100,9 +121,9 @@ function App() {
                 </div>
               </div>
             </div>
-          </div>
-          <p> </p>
-        </React.Fragment>
+          </div> */}
+          < p > </p>
+        </React.Fragment >
 
       ))
       }
