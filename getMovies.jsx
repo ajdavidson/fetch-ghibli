@@ -1,6 +1,6 @@
 function App() {
   const { useState, useEffect } = React;
-  const { Container, Button, Modal, Dropdown } = ReactBootstrap;
+  const { Container, Button, Modal, Dropdown, Image } = ReactBootstrap;
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
@@ -36,9 +36,11 @@ function App() {
 
   return (
     <Container>
-      <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop"><i
-        className="fas fa-angle-double-up"></i></a>
-
+      {/* <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop"><i
+        className="fas fa-angle-double-up"></i></a> */}
+      <Button variant="outline-secondary" href="#top" id="toTop"><i
+        className="fas fa-angle-double-up"></i></Button>
+      <Image src="./Studio_Ghibli_logo.png" width="33%" />
       <p> </p>
       {/* dropdown  */}
       {/* <div className="dropdown dropright">
