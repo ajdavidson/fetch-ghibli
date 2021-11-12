@@ -59,7 +59,7 @@ function App() {
         <React.Fragment>
           {/* target  */}
           <div id={movie.id} />
-          <Card style={{ width: "100%"}}>
+          <Card>
             <Row>
 
               <Col sm={4} md={6}>
@@ -88,7 +88,7 @@ function App() {
                   </Button></ListGroupItem>
                 </ListGroup>
               </Col>
-              <Col xs={4} md="auto" fluid><Card.Img height="699px" variant="top" src={movie.image} fluid /></Col>
+              <Col xs={4} md="6" fluid><Card.Img  variant="top" src={movie.image} fluid /></Col>
             </Row>
           </Card>
           {/* <div class="row">
