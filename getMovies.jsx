@@ -34,9 +34,12 @@ function App() {
 
     };
 
-    fetchData();
-    console.log("Fetching done");
-    setFetching('false');
+    fetchData().then(r => {
+      setTimeout(()=>setFetching('false'),1000);
+      console.log("Fetching done");
+    });
+
+
 
   }, []);
 
