@@ -1,8 +1,10 @@
 function App() {
   const { useState, useEffect } = React;
-  const { Container, Row, Col, Button, Modal, Dropdown, Image, Card, ListGroup, ListGroupItem, Fade } = ReactBootstrap;
+  const { Container, Row, Col, Button, Modal, Dropdown, Image, Card, ListGroup, ListGroupItem, Fade, Spinner } = ReactBootstrap;
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
+  const [fetching, setFetching] = useState('false');
+
   //const [query, setQuery] = useState("");
   //const [rtImg, setRTImg] = useState('rt-cf.png');
 
@@ -22,20 +24,24 @@ function App() {
   console.log("Rendering App");
 
   useEffect(() => {
-
+    setFetching('grow')
     console.log("Fetching data...");
     const fetchData = async () => {
       const result = await axios(url);
       setData(result.data);
       console.log(result.data)
+
     };
 
     fetchData();
+    console.log("Fetching done");
+    setFetching('false');
 
   }, []);
 
   return (
     <Container>
+
 
       <Button variant="outline-secondary" href="#top" id="toTop"><i
         className="fas fa-angle-double-up"></i></Button>
@@ -43,7 +49,7 @@ function App() {
       <Fade in={true} appear={true} timeout={3000}>
       <Image src="./Studio_Ghibli_logo.png" width="33%" />
       </Fade>
-
+        <Spinner animation={fetching} role="status"/>
       <p> </p>
       <Dropdown drop="end">
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
