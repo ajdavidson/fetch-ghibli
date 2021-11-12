@@ -74,7 +74,7 @@ function App() {
                   <Card.Subtitle className="mb-2 text-muted">{movie.original_title} ({movie.original_title_romanised})</Card.Subtitle>
               </Card.Header>
             <Row>
-              <Col sm={4} md={6} lg={8}>
+              <Col sm={12} lg={8}>
                 <Card.Body>
                   {movie.description}
                 </Card.Body>
@@ -93,7 +93,7 @@ function App() {
                   </Button></ListGroupItem>
                 </ListGroup>
               </Col>
-              <Col xs={2} md={4} lg={4}><Card.Img  variant="top" src={movie.image} /></Col>
+              <Col sm={12} lg={4}><Card.Img  variant="top" src={movie.image} fluid/></Col>
             </Row>
               <Card.Footer></Card.Footer>
           </Card>
