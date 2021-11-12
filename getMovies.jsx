@@ -59,7 +59,7 @@ function App() {
         <React.Fragment>
           {/* target  */}
           <div id={movie.id} />
-          <Card style={{ width: "100%", height: "700px" }}>
+          <Card style={{ width: "100%"}}>
             <Row>
 
               <Col sm={4} md={6}>
