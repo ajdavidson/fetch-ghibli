@@ -1,6 +1,6 @@
 function App() {
   const { useState, useEffect } = React;
-  const { Container,Button,Modal } = ReactBootstrap;
+  const { Container, Button, Modal, Dropdown } = ReactBootstrap;
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
@@ -37,25 +37,38 @@ function App() {
   return (
     <Container>
       <a className="btn btn-outline-secondary" href="#top" role="button" id="toTop"><i
-          className="fas fa-angle-double-up"></i></a>
+        className="fas fa-angle-double-up"></i></a>
 
       <p> </p>
-      <div className="dropdown dropright">
+      {/* dropdown  */}
+      {/* <div className="dropdown dropright">
         <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-           data-toggle="dropdown" aria-expanded="false">
+          data-toggle="dropdown" aria-expanded="false">
           <i className="fas fa-film fa-2x"></i>
         </a>
 
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {data.map(movie => (
-            <a className="dropdown-item" href={'#'+movie.id}>{movie.title}</a>
-            ))}
+            <a className="dropdown-item" href={'#' + movie.id}>{movie.title}</a>
+          ))}
         </div>
-      </div>
+      </div> */}
+      <Dropdown drop="end">
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+          <i className="fas fa-film fa-2x"></i>
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          {data.map(title => (
+            <Dropdown.Item href={'#' + title.id}>{title.title}</Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
 
       {data.map(movie => (
 
         <React.Fragment>
+          {/* target  */}
           <div id={movie.id} />
           <div class="row">
             <div class="col">
@@ -72,15 +85,15 @@ function App() {
                       <li class="list-group-item"><i class="fas fa-ticket-alt"></i> {movie.producer} Production</li>
                       <li class="list-group-item"><i class="fas fa-clock"></i> {movie.running_time} min</li>
                       <li class="list-group-item"><i class="fas fa-calendar-alt"></i> {movie.release_date}</li>
-                      <li class="list-group-item"><img src={movie.rt_score<70 ? 'rt-sp.png': movie.rt_score<90 ? 'rt-f.png': 'rt-cf.png'} width="25px" /> {movie.rt_score}%</li>
+                      <li class="list-group-item"><img src={movie.rt_score < 70 ? 'rt-sp.png' : movie.rt_score < 90 ? 'rt-f.png' : 'rt-cf.png'} width="25px" /> {movie.rt_score}%</li>
                       <li className="list-group-item">
                         <Button variant="outline-secondary" x={movie.title}
-                           onClick={()=>{
-                           handleShow(movie.title,movie.movie_banner);
-                           //alert('yep');
-                           }
-                         }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
-                      </Button></li>
+                          onClick={() => {
+                            handleShow(movie.title, movie.movie_banner);
+                            //alert('yep');
+                          }
+                          }><i className="fas fa-image fa-lg"></i> Movie Banner <i className="fas fa-external-link-alt fa-xs"></i>
+                        </Button></li>
                     </ul>
                   </div>
                   <img class="card-img-left" src={movie.image} alt="Card image cap" height="500px" />
@@ -97,7 +110,7 @@ function App() {
         <Modal.Header closeButton>
           <Modal.Title><i className="fas fa-film"></i> {title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body><img src={banner} width="100%px"/></Modal.Body>
+        <Modal.Body><img src={banner} width="100%px" /></Modal.Body>
       </Modal>
     </Container >
   );
