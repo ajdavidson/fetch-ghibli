@@ -4,7 +4,7 @@ function App() {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   //const [query, setQuery] = useState("");
-  const [rtImg, setRTImg] = useState('rt-cf.png');
+  //const [rtImg, setRTImg] = useState('rt-cf.png');
 
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('My Title');
@@ -68,19 +68,11 @@ function App() {
                   <Card.Subtitle className="mb-2 text-muted">{movie.original_title} ({movie.original_title_romanised})</Card.Subtitle>
               </Card.Header>
             <Row>
-
               <Col sm={4} md={6} lg={8}>
-                {/*<Card.Body>*/}
-                {/*  /!*<Card.Title><i class="fas fa-film"></i> {movie.title}</Card.Title>*!/*/}
-                {/*  /!*<Card.Subtitle className="mb-2 text-muted">{movie.original_title} ({movie.original_title_romanised})</Card.Subtitle>*!/*/}
-                {/*  /!*<Card.Text>*!/*/}
-                {/*  /!*</Card.Text>*!/*/}
-                {/*</Card.Body>*/}
                 <Card.Body>
                   {movie.description}
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroupItem><i class="fas fa-video"></i> Directed by {movie.director}</ListGroupItem>
                   <ListGroupItem><i class="fas fa-video"></i> Directed by {movie.director}</ListGroupItem>
                   <ListGroupItem><i class="fas fa-ticket-alt"></i> {movie.producer} Production</ListGroupItem>
                   <ListGroupItem><i class="fas fa-clock"></i> {movie.running_time} min</ListGroupItem>
