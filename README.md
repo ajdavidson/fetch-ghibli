@@ -44,7 +44,7 @@
 
 <br>
 
-## :dart: About ##
+## :eye_speech_bubble: About ##
 
 React project Fetches remote data about Films from the Studio Ghibli public API.
 Uses the Axios promise-based HTTP Client for node.js and the browser.  Bootstrap styling

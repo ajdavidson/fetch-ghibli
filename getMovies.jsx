@@ -4,14 +4,12 @@ function App() {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
   const [fetching, setFetching] = useState('grow');
+  const [show, setShow] = useState(false);
+  const [title, setTitle] = useState('Empty Title');
+  const [banner, setBanner] = useState('Empty Link');
   //const [open, setOpen] = useState(true);
-
   //const [query, setQuery] = useState("");
   //const [rtImg, setRTImg] = useState('rt-cf.png');
-
-  const [show, setShow] = useState(false);
-  const [title, setTitle] = useState('My Title');
-  const [banner, setBanner] = useState('My Link');
 
   const handleClose = () => setShow(false);
 
@@ -46,7 +44,7 @@ function App() {
   return (
     <Container>
 
-      <Button variant="outline-secondary" href="#top" id="toTop"><i className="fas fa-angle-double-up" /></Button>
+      <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg" /></Button>
 
       <Image src="./Studio_Ghibli_logo.png" width="33%" />
 
