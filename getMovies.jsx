@@ -79,7 +79,8 @@ function App() {
     ListGroupItem,
     Spinner,
     FormControl,
-    InputGroup
+    InputGroup,
+    Form
   } = ReactBootstrap;
   const [query, setQuery] = useState("");
   const [show, setShow] = useState(false);
@@ -106,7 +107,7 @@ function App() {
       <Image src="./Studio_Ghibli_logo.png" width="33%"/>
 
       <Row>
-        <Col sm={12} lg={8}>
+        <Col sm={12} lg={7}>
           <Dropdown drop="end">
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               <i className="fas fa-film fa-2x"/>
@@ -119,8 +120,9 @@ function App() {
             </Dropdown.Menu>
           </Dropdown>
         </Col>
-        <Col sm={12} lg={4}>
-          <form
+        <Col sm={12} lg={5}>
+
+          <Form
             onSubmit={event => {
               doFetch(`https://ghibliapi.herokuapp.com/films/?title=${query}`);
 
@@ -131,8 +133,6 @@ function App() {
               <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/>&nbsp;Title:</InputGroup.Text>
               <FormControl
                 placeholder="All"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
               />
@@ -140,15 +140,17 @@ function App() {
                 Search <i className="fas fa-search"></i>
               </Button>
             </InputGroup>
-          </form>
+          </Form>
+
         </Col>
       </Row>
 
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-        <div><Spinner className="spinner" size="sm" animation="grow" variant="secondary" role="status"/> Loading ...
-        </div>
+
+        <Spinner className="spinner" size="sm" animation="grow" variant="secondary" role="status"> Loading ...</Spinner>
+
       ) : (
 
         data.map(movie => (
