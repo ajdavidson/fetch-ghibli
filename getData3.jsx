@@ -65,12 +65,9 @@ const dataFetchReducer = (state, action) => {
 };
 
 function App() {
-    const { useState, useEffect, useReducer } = React;
-    const { Fragment, Container, Row, Col, Button, Modal, Dropdown, Image, Card, ListGroup, ListGroupItem, Fade, Spinner, Transition } = ReactBootstrap;
-    const [query, setQuery] = useState("Title");
-    //const [data, setData] = useState([]);
-    //const [url, setUrl] = useState("https://ghibliapi.herokuapp.com/films/");
-    const [fetching, setFetching] = useState('grow');
+    const { useState} = React;
+    const { Container, Row, Col, Button, Modal, Dropdown, Image, Card, ListGroup, ListGroupItem, Spinner, FormControl, InputGroup  } = ReactBootstrap;
+    const [query, setQuery] = useState("All");
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState('Empty Title');
     const [banner, setBanner] = useState('Empty Link');
@@ -87,21 +84,13 @@ function App() {
         setTitle(title);
         setBanner(banner);
     }
-    // function handleSelect(title) {
-    //     setQuery(title)
-    //     doFetch(`https://ghibliapi.herokuapp.com/films/?title=${title}`);
-    //     alert('Drop Fetch');
-    // }
+
     return (
         <Container>
 
             <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg" /></Button>
 
             <Image src="./Studio_Ghibli_logo.png" width="33%" />
-
-            {/* <Spinner className="spinner" size="sm" animation={fetching} variant="secondary" role="status" />
-            <Spinner className="spinner-sm" size="sm" animation={fetching} variant="secondary" role="status" />
-            <Spinner className="spinner-sm-2" size="sm" animation={fetching} variant="secondary" role="status" /> */}
 
             <Row>
                 <Col sm={12} lg={8}>
@@ -112,9 +101,7 @@ function App() {
 
                         <Dropdown.Menu>
                             {data.map(title => (
-                                <Dropdown.Item value={title.title} href={'#' + title.id}
-                                //onSelect={handleSelect(title.title)}
-                                >{title.title}</Dropdown.Item>
+                                <Dropdown.Item value={title.title} href={'#' + title.id}>{title.title}</Dropdown.Item>
                             ))}
                         </Dropdown.Menu>
                     </Dropdown>
@@ -127,23 +114,33 @@ function App() {
                             event.preventDefault();
                         }}
                     >
-                        <input
-                            type="text"
-                            value={query}
-                            onChange={event => setQuery(event.target.value)}
-                        />
-                        <button type="submit">Search</button>
+                        {/*<input*/}
+                        {/*    type="text"*/}
+                        {/*    value={query}*/}
+                        {/*    onChange={event => setQuery(event.target.value)}*/}
+                        {/*/>*/}
+                        {/*<button type="submit">Search</button>*/}
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text id="basic-addon1">Title:</InputGroup.Text>
+                            <FormControl
+                                placeholder="Recipient's username"
+                                aria-label="Recipient's username"
+                                aria-describedby="basic-addon2"
+                                value={query}
+                                onChange={event => setQuery(event.target.value)}
+                            />
+                            <Button variant="outline-secondary" type="submit" id="button-addon2">
+                                Search <i className="fas fa-search"></i>
+                            </Button>
+                        </InputGroup>
                     </form>
                 </Col>
             </Row>
 
-
-
-
             {isError && <div>Something went wrong ...</div>}
 
             {isLoading ? (
-                <div>Loading ...</div>
+                <div><Spinner className="spinner" size="sm" animation="grow" variant="secondary" role="status" /> Loading ...</div>
             ) : (
 
                 data.map(movie => (
