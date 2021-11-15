@@ -104,7 +104,7 @@ function App() {
 
       <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg"/></Button>
 
-      <Image src="./Studio_Ghibli_logo.png" width="33%"/>
+      <Image src="./Studio_Ghibli_logo.png" width="33%" style={{marginBottom:"10px"}}/>
 
       <Row>
         <Col sm={12} lg={7}>
@@ -121,7 +121,6 @@ function App() {
           </Dropdown>
         </Col>
         <Col sm={12} lg={5}>
-
           <Form
             onSubmit={event => {
               doFetch(`https://ghibliapi.herokuapp.com/films/?title=${query}`);
@@ -129,19 +128,18 @@ function App() {
               event.preventDefault();
             }}
           >
-            <InputGroup className="mb-3">
-              <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/>&nbsp;Title:</InputGroup.Text>
+            <InputGroup className="mb-3" style={{margin:"0"}}>
+              <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/></InputGroup.Text>
               <FormControl
-                placeholder="All"
+                placeholder="Full Title Case Sensitive"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
               />
               <Button variant="outline-secondary" type="submit" id="button-addon2">
-                Search <i className="fas fa-search"></i>
+                Search <i className="fas fa-search"/>
               </Button>
             </InputGroup>
           </Form>
-
         </Col>
       </Row>
 
@@ -149,7 +147,7 @@ function App() {
 
       {isLoading ? (
 
-        <Spinner className="spinner" size="sm" animation="grow" variant="secondary" role="status"> Loading ...</Spinner>
+        <Spinner className="spinner" size="lg" animation="grow" variant="secondary" role="status"/>
 
       ) : (
 
@@ -158,7 +156,7 @@ function App() {
           <React.Fragment>
             {/* target  */}
             <div id={movie.id}/>
-            <Card>
+            <Card style={{marginBottom:"10px"}}>
               <Card.Header>
                 <Card.Title><i className="fas fa-film"/> {movie.title}</Card.Title>
                 <Card.Subtitle
@@ -180,14 +178,17 @@ function App() {
                         width="25px"
                       /> {' ' + movie.rt_score}%
                     </ListGroupItem>
-                    <ListGroupItem><Button variant="outline-secondary" x={movie.title}
-                                           onClick={() => {
-                                             handleShow(movie.title, movie.movie_banner);
-                                             console.log('Showing Banner...');
-                                           }
-                                           }><i className="fas fa-image fa-lg"/> Movie Banner <i
-                      className="fas fa-external-link-square-alt fa-xs"/>
-                    </Button></ListGroupItem>
+                    <ListGroupItem>
+                      <Button variant="outline-secondary"
+                              x={movie.title}
+                              onClick={() => {
+                                handleShow(movie.title, movie.movie_banner);
+                                console.log('Showing Banner...');
+                              }
+                              }><i className="fas fa-image fa-lg"/> Movie Banner <i
+                        className="fas fa-external-link-square-alt fa-xs"/>
+                      </Button>
+                    </ListGroupItem>
                   </ListGroup>
                 </Col>
                 <Col sm={12} lg={{span: 5, offset: 1}}><Card.Img src={movie.image} fluid="true"/></Col>
@@ -195,9 +196,7 @@ function App() {
               <Card.Footer/>
             </Card>
           </React.Fragment>
-
         ))
-
       )}
       <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header closeButton>
@@ -206,7 +205,6 @@ function App() {
         <Modal.Body><Card.Img src={banner}/></Modal.Body>
       </Modal>
     </Container>
-
   );
 }
 
