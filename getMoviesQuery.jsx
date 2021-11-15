@@ -31,17 +31,14 @@ function App() {
       console.log(result.statusText);
       console.log(result.headers);
       console.log(result.config);
+      console.log(result.data);
       setData(result.data);
-      console.log(result.data)
-
     };
 
     fetchData().then(r => {
       setTimeout(() => setFetching('false'), 1000);
-      console.log("Fetching done");
+      console.log("...Fetching done");
     });
-
-
 
   }, []);
 
