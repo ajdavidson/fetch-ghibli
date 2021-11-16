@@ -104,7 +104,7 @@ function App() {
 
       <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg"/></Button>
 
-      <Image src="./Studio_Ghibli_logo.png" width="33%" style={{marginBottom:"10px"}}/>
+      <Image src="./Studio_Ghibli_logo.png" width="33%" style={{marginBottom: "10px"}}/>
 
       <Row>
         <Col sm={12} lg={7}>
@@ -128,7 +128,7 @@ function App() {
               event.preventDefault();
             }}
           >
-            <InputGroup className="mb-3" style={{margin:"0"}}>
+            <InputGroup className="mb-3" style={{margin: "0"}}>
               <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/></InputGroup.Text>
               <FormControl
                 placeholder="Full Title Case Sensitive"
@@ -146,9 +146,11 @@ function App() {
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-
-        <Spinner className="spinner" size="lg" animation="grow" variant="secondary" role="status"/>
-
+        <Row>
+          <Col align={'center'}>
+            <Spinner className="spinner" size="lg" animation="grow" variant="secondary" role="status"/>
+          </Col>
+        </Row>
       ) : (
 
         data.map(movie => (
@@ -156,7 +158,7 @@ function App() {
           <React.Fragment>
             {/* target  */}
             <div id={movie.id}/>
-            <Card style={{marginBottom:"10px"}}>
+            <Card style={{marginBottom: "10px"}}>
               <Card.Header>
                 <Card.Title><i className="fas fa-film"/> {movie.title}</Card.Title>
                 <Card.Subtitle
