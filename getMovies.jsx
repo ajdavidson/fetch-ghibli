@@ -1,4 +1,4 @@
-const useDataApi = (initialUrl, initialData) => {
+const useDataApi = (initialUrl, initialData, theQuery) => {
   const {useState, useEffect, useReducer} = React;
 
   const [url, setUrl] = useState(initialUrl);
@@ -21,7 +21,36 @@ const useDataApi = (initialUrl, initialData) => {
           console.log(result.config);
           console.log(result.data);
           console.log("...Fetching done");
-          dispatch({type: "FETCH_SUCCESS", payload: result.data});
+
+          // Fuse it!
+          const options = {
+            shouldSort: true,
+            matchAllTokens: true,
+            findAllMatches: true,
+            includeScore: true,
+            threshold: 0.2,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 1,
+            useExtendedSearch: true,
+            keys: [
+              "title"
+            ]
+          };
+
+          const fuse = new Fuse(result.data, options);
+          const resFuse = fuse.search(theQuery)
+          console.log(...resFuse)
+          const fuseResults = resFuse.map(t => t.item);
+          console.log({fuseResults})
+          //////////////////////////////////////////
+          if (theQuery) {
+            dispatch({type: "FETCH_SUCCESS", payload: fuseResults});
+          } else {
+            dispatch({type: "FETCH_SUCCESS", payload: result.data});
+          }
+
         }
       } catch (error) {
         if (!didCancel) {
@@ -33,7 +62,7 @@ const useDataApi = (initialUrl, initialData) => {
     return () => {
       didCancel = true;
     };
-  }, [url]);
+  }, [theQuery]);
   return [state, setUrl];
 };
 const dataFetchReducer = (state, action) => {
@@ -88,7 +117,7 @@ function App() {
   const [banner, setBanner] = useState('Empty Link');
   // the call to dataAPI
   const [{data, isLoading, isError}, doFetch] = useDataApi(
-    "https://ghibliapi.herokuapp.com/films/", []
+    "https://ghibliapi.herokuapp.com/films/", [], query
   );
   const handleClose = () => setShow(false);
 
@@ -123,7 +152,7 @@ function App() {
         <Col sm={12} lg={5}>
           <Form
             onSubmit={event => {
-              doFetch(`https://ghibliapi.herokuapp.com/films/?title=${query}`);
+              doFetch(`https://ghibliapi.herokuapp.com/films`, query);
 
               event.preventDefault();
             }}
@@ -131,12 +160,12 @@ function App() {
             <InputGroup className="mb-3" style={{margin: "0"}}>
               <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/></InputGroup.Text>
               <FormControl
-                placeholder="Full Title Case Sensitive"
+                placeholder="Title"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
               />
-              <Button variant="outline-secondary" type="submit" id="button-addon2">
-                Search <i className="fas fa-search"/>
+              <Button variant="outline-secondary" type="reset" id="button-addon2" onClick={()=>setQuery('')}>
+                Reset <i className="fas fa-undo-alt"></i>
               </Button>
             </InputGroup>
           </Form>
