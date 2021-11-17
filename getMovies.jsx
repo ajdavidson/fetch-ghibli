@@ -40,8 +40,9 @@ const useDataApi = (initialUrl, initialData, query) => {
           };
 
           const fuse = new Fuse(result.data, options);
-          const resFuse = fuse.search(query)
-          console.log(...resFuse)
+          const resFuse = fuse.search(query);
+          console.log(resFuse);
+          if (resFuse.length===0) console.log('Empty Search');
           const fuseResults = resFuse.map(t => t.item);
           console.log({fuseResults})
           //////////////////////////////////////////
@@ -76,13 +77,13 @@ const dataFetchReducer = (state, action) => {
     case "FETCH_SUCCESS":
 
       return {
-
         ...state,
         isLoading: false,
         isError: false,
         data: action.payload
       };
     case "FETCH_FAILURE":
+
       return {
         ...state,
         isLoading: false,
@@ -255,7 +256,9 @@ function App() {
         </Col>
       </Row>
 
-      {isError && <div>Something went wrong ...</div>}
+      {isError && <div><h2>Something went wrong ...</h2></div>}
+
+      {data.length===0 && <div><h2>No matches to your search ...</h2></div>}
 
       {isLoading ? (
         <Row>
