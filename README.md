@@ -49,7 +49,7 @@
 React project Fetches remote data about Films from the Studio Ghibli public API.
 Uses the Axios promise-based HTTP Client for node.js and the browser.  Bootstrap styling
 including a react-bootstrap Modal that uses dynamic data.  Handy page navigation using
-data and bootstrap.
+data and bootstrap. Fuzzy title search with advanced search tokens. 
 
 ## :sparkles: Features ##
 
