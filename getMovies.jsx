@@ -158,14 +158,16 @@ function App() {
             }}
           >
             <InputGroup className="mb-3" style={{margin: "0"}}>
-              <InputGroup.Text id="basic-addon1"><i className="fas fa-film"/></InputGroup.Text>
+              <InputGroup.Text id="basic-addon1">
+              <i className="fas fa-search"/>
+              </InputGroup.Text>
               <FormControl
                 placeholder="Title"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
               />
               <Button variant="outline-secondary" type="reset" id="button-addon2" onClick={()=>setQuery('')}>
-                Reset <i className="fas fa-undo-alt"></i>
+                <i className="fas fa-undo-alt"/>
               </Button>
             </InputGroup>
           </Form>
