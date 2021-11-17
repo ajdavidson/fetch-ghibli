@@ -1,4 +1,4 @@
-const useDataApi = (initialUrl, initialData, theQuery) => {
+const useDataApi = (initialUrl, initialData, query) => {
   const {useState, useEffect, useReducer} = React;
 
   const [url, setUrl] = useState(initialUrl);
@@ -40,12 +40,12 @@ const useDataApi = (initialUrl, initialData, theQuery) => {
           };
 
           const fuse = new Fuse(result.data, options);
-          const resFuse = fuse.search(theQuery)
+          const resFuse = fuse.search(query)
           console.log(...resFuse)
           const fuseResults = resFuse.map(t => t.item);
           console.log({fuseResults})
           //////////////////////////////////////////
-          if (theQuery) {
+          if (query) {
             dispatch({type: "FETCH_SUCCESS", payload: fuseResults});
           } else {
             dispatch({type: "FETCH_SUCCESS", payload: result.data});
@@ -62,7 +62,7 @@ const useDataApi = (initialUrl, initialData, theQuery) => {
     return () => {
       didCancel = true;
     };
-  }, [theQuery]);
+  }, [query]);
   return [state, setUrl];
 };
 const dataFetchReducer = (state, action) => {
@@ -109,7 +109,10 @@ function App() {
     Spinner,
     FormControl,
     InputGroup,
-    Form
+    Form,
+    Popover,
+    OverlayTrigger,
+    Table
   } = ReactBootstrap;
   const [query, setQuery] = useState("");
   const [show, setShow] = useState(false);
@@ -136,7 +139,7 @@ function App() {
       <Image src="./Studio_Ghibli_logo.png" width="33%" style={{marginBottom: "10px"}}/>
 
       <Row>
-        <Col sm={12} lg={7}>
+        <Col sm={12} lg={4} align={"left"}>
           <Dropdown drop="end">
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               <i className="fas fa-film fa-2x"/>
@@ -149,7 +152,7 @@ function App() {
             </Dropdown.Menu>
           </Dropdown>
         </Col>
-        <Col sm={12} lg={5}>
+        <Col m={12} lg={4}>
           <Form
             onSubmit={event => {
               doFetch(`https://ghibliapi.herokuapp.com/films`, query);
@@ -159,7 +162,7 @@ function App() {
           >
             <InputGroup className="mb-3" style={{margin: "0"}}>
               <InputGroup.Text id="basic-addon1">
-              <i className="fas fa-search"/>
+                <i className="fas fa-search"/>
               </InputGroup.Text>
               <FormControl
                 placeholder="Title"
@@ -171,6 +174,76 @@ function App() {
               </Button>
             </InputGroup>
           </Form>
+        </Col>
+        <Col sm={12} lg={{span: 2, offset: 2}} align={"right"}>
+          {/*{['top', 'right', 'bottom', 'left'].map((placement) => (*/}
+          {['bottom'].map((placement) => (
+            <OverlayTrigger
+              trigger="click"
+              key={placement}
+              placement={placement}
+              overlay={
+                <Popover id={`popover-positioned-${placement}`}>
+                  <Popover.Header as="h3">Advanced Search Tokens Example</Popover.Header>
+                  <Popover.Body>
+                    <Table striped bordered hover>
+                      <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>Match type</th>
+                        <th>Description</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>entry</td>
+                        <td>fuzzy-match</td>
+                        <td>Items that fuzzy match entry</td>
+                      </tr>
+                      <tr>
+                        <td>=entry</td>
+                        <td>exact-match</td>
+                        <td>Items that are entry</td>
+                      </tr>
+                      <tr>
+                        <td>'entry</td>
+                        <td>include-match</td>
+                        <td>Items that include entry</td>
+                      </tr>
+                      <tr>
+                        <td>!entry</td>
+                        <td>inverse-exact-match</td>
+                        <td>Items that do not include entry</td>
+                      </tr>
+                      <tr>
+                        <td>^entry</td>
+                        <td>prefix-exact-match</td>
+                        <td>Items that start with entry</td>
+                      </tr>
+                      <tr>
+                        <td>!^entry</td>
+                        <td>inverse-prefix-exact-match</td>
+                        <td>Items that do not start with entry</td>
+                      </tr>
+                      <tr>
+                        <td>entry$</td>
+                        <td>suffix-exact-match</td>
+                        <td>Items that end with entry</td>
+                      </tr>
+                      <tr>
+                        <td>!entry$</td>
+                        <td>inverse-suffix-exact-match</td>
+                        <td>Items that do not end with entry</td>
+                      </tr>
+                      </tbody>
+                    </Table>
+                  </Popover.Body>
+                </Popover>
+              }
+            >
+              <Button variant="secondary"><i className="fas fa-info-circle fa-2x"/></Button>
+            </OverlayTrigger>
+          ))}
         </Col>
       </Row>
 
