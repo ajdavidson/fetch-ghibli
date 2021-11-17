@@ -256,9 +256,9 @@ function App() {
         </Col>
       </Row>
 
-      {isError && <div><h2>Something went wrong ...</h2></div>}
+      {isError && <div><h3>Something went wrong ...</h3></div>}
 
-      {data.length===0 && <div><h2>No matches to your search ...</h2></div>}
+      {data.length===0 || !isLoading && <div><h3>No matches to your search ...</h3></div>}
 
       {isLoading ? (
         <Row>
