@@ -24,7 +24,7 @@ const useDataApi = (initialUrl, initialData, query) => {
 
           // Fuse it!
           const options = {
-            shouldSort: true,
+            shouldSort: false,
             matchAllTokens: true,
             findAllMatches: true,
             includeScore: true,
@@ -95,6 +95,10 @@ const dataFetchReducer = (state, action) => {
 
 function App() {
   const {useState} = React;
+  const [query, setQuery] = useState("");
+  const [show, setShow] = useState(false);
+  const [title, setTitle] = useState('Empty Title');
+  const [banner, setBanner] = useState('Empty Link');
   const {
     Container,
     Row,
@@ -114,14 +118,11 @@ function App() {
     OverlayTrigger,
     Table
   } = ReactBootstrap;
-  const [query, setQuery] = useState("");
-  const [show, setShow] = useState(false);
-  const [title, setTitle] = useState('Empty Title');
-  const [banner, setBanner] = useState('Empty Link');
   // the call to dataAPI
   const [{data, isLoading, isError}, doFetch] = useDataApi(
     "https://ghibliapi.herokuapp.com/films/", [], query
   );
+
   const handleClose = () => setShow(false);
 
   const handleShow = (title, banner) => {
@@ -191,7 +192,7 @@ function App() {
               placement={placement}
               overlay={
                 <Popover id={`popover-positioned-${placement}`}>
-                  <Popover.Header as="h3">Advanced Search Tokens</Popover.Header>
+                  <Popover.Header align={"center"}><b>Advanced Search Tokens</b></Popover.Header>
                   <Popover.Body>
                     <Table striped bordered hover>
                       <thead>
