@@ -137,11 +137,11 @@ function App() {
       <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg"/></Button>
 
       <Row>
-      <Col sm={12} lg={6}>
+      <Col sm={6} lg={6}>
       <Image src="./Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px",width:"365px"}}/>
       </Col>
-        <Col sm={12} lg={6}>
-          <Image src="./sprites.png"  style={{marginBottom: "10px",width:"50%"}} align={"right"}/>
+        <Col sm={6} lg={6} >
+          <Image src="./sprites.png" style={{marginBottom: "10px",width:"50%"}} align={"right"}/>
         </Col>
       </Row>
 
