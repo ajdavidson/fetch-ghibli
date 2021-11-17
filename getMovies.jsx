@@ -42,7 +42,7 @@ const useDataApi = (initialUrl, initialData, query) => {
           const fuse = new Fuse(result.data, options);
           const resFuse = fuse.search(query);
           console.log(resFuse);
-          if (resFuse.length===0) console.log('Empty Search');
+          if (resFuse.length === 0) console.log('Empty Search');
           const fuseResults = resFuse.map(t => t.item);
           console.log({fuseResults})
           //////////////////////////////////////////
@@ -139,16 +139,16 @@ function App() {
       <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg"/></Button>
 
       <Row>
-      <Col sm={6} lg={6}>
-      <Image src="./Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px",width:"365px"}}/>
-      </Col>
-        <Col sm={6} lg={6} >
-          <Image src="./sprites.png" style={{marginBottom: "10px",width:"50%"}} align={"right"}/>
+        <Col sm={6} lg={6}>
+          <Image src="./Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px", width: "365px"}}/>
+        </Col>
+        <Col sm={6} lg={6}>
+          <Image src="./sprites.png" style={{marginBottom: "10px", width: "50%"}} align={"right"}/>
         </Col>
       </Row>
 
       <Row>
-        <Col sm={6} lg={{span: 4 , order: 'first'}} align={"left"}>
+        <Col sm={6} lg={{span: 4, order: 'first'}} align={"left"}>
           <Dropdown drop="end">
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               <i className="fas fa-film fa-2x"/>
@@ -178,7 +178,7 @@ function App() {
                 value={query}
                 onChange={event => setQuery(event.target.value)}
               />
-              <Button variant="outline-secondary" type="reset" id="button-addon2" onClick={()=>setQuery('')}>
+              <Button variant="outline-secondary" type="reset" id="button-addon2" onClick={() => setQuery('')}>
                 <i className="fas fa-undo-alt"/>
               </Button>
             </InputGroup>
@@ -258,7 +258,7 @@ function App() {
 
       {isError && <div><h3>Something went wrong ...</h3></div>}
 
-      {data.length===0 && <div><h3>No matches to your search ...</h3></div>}
+      {/*{data.length===0 && <div><h3>No matches to your search ...</h3></div>}*/}
 
       {isLoading ? (
         <Row>
@@ -266,6 +266,8 @@ function App() {
             <Spinner className="spinner" size="lg" animation="grow" variant="secondary" role="status"/>
           </Col>
         </Row>
+      ) : data.length === 0 ? (
+        <div><h3>No matches to your search ...</h3></div>
       ) : (
 
         data.map(movie => (
