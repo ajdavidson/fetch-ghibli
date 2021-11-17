@@ -49,26 +49,27 @@
 React project Fetches remote data about Films from the Studio Ghibli public API.
 Uses the Axios promise-based HTTP Client for node.js and the browser.  Bootstrap styling
 including a react-bootstrap Modal that uses dynamic data.  Handy page navigation using
-data and bootstrap. Fuzzy title search with advanced search tokens. 
+data and bootstrap. Fuzzy title search with advanced search tokens using the Fuse.js library. 
 
 ## :sparkles: Features ##
 
 :heavy_check_mark: Promise based remote data fetch\
 :heavy_check_mark: Lists all films in Studio Ghibli API\
 :heavy_check_mark: react-bootstrap dynamic Modal\
-:heavy_check_mark: Rotten Tomato score with dynamic icon
+:heavy_check_mark: Rotten Tomato score with dynamic icon\
+:heavy_check_mark: Advanced Fuzzy search
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [JavaScript](https://www.ecma-international.org/)
-- [CSS](https://www.w3.org/TR/CSS/#css)
-- [HTML](https://whatwg.org/)
-- [Babel](https://babeljs.io/)
-- [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
+- [Axios-HTTP](https://axios-http.com/)
+- [Fuse](https://fusejs.io/)
+- [Babel](https://babeljs.io/)
+- [Node.js](https://nodejs.org/en/)
+
 
 ## :white_check_mark: Requirements ##
 
