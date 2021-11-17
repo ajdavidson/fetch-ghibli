@@ -136,10 +136,17 @@ function App() {
 
       <Button variant="outline-secondary" href="#top" id="toTop" size="lg"><i className="fas fa-angle-double-up fa-lg"/></Button>
 
-      <Image src="./Studio_Ghibli_logo.png" width="33%" style={{marginBottom: "10px"}}/>
+      <Row>
+      <Col sm={12} lg={6}>
+      <Image src="./Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px",width:"365px"}}/>
+      </Col>
+        <Col sm={12} lg={6}>
+          <Image src="./sprites.png"  style={{marginBottom: "10px",width:"50%"}} align={"right"}/>
+        </Col>
+      </Row>
 
       <Row>
-        <Col sm={12} lg={4} align={"left"}>
+        <Col sm={6} lg={{span: 4 , order: 'first'}} align={"left"}>
           <Dropdown drop="end">
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               <i className="fas fa-film fa-2x"/>
@@ -152,7 +159,7 @@ function App() {
             </Dropdown.Menu>
           </Dropdown>
         </Col>
-        <Col m={12} lg={4}>
+        <Col sm={{span: 12, order: 'first'}} lg={4}>
           <Form
             onSubmit={event => {
               doFetch(`https://ghibliapi.herokuapp.com/films`, query);
@@ -175,7 +182,7 @@ function App() {
             </InputGroup>
           </Form>
         </Col>
-        <Col sm={12} lg={{span: 2, offset: 2}} align={"right"}>
+        <Col sm={6} lg={{span: 2, offset: 2}} align={"right"}>
           {/*{['top', 'right', 'bottom', 'left'].map((placement) => (*/}
           {['bottom'].map((placement) => (
             <OverlayTrigger
@@ -184,7 +191,7 @@ function App() {
               placement={placement}
               overlay={
                 <Popover id={`popover-positioned-${placement}`}>
-                  <Popover.Header as="h3">Advanced Search Tokens Example</Popover.Header>
+                  <Popover.Header as="h3">Advanced Search Tokens</Popover.Header>
                   <Popover.Body>
                     <Table striped bordered hover>
                       <thead>
