@@ -55,6 +55,7 @@ const useDataApi = (initialUrl, initialData, query) => {
         }
       } catch (error) {
         if (!didCancel) {
+          console.log(error)
           dispatch({type: "FETCH_FAILURE"});
         }
       }
@@ -75,7 +76,6 @@ const dataFetchReducer = (state, action) => {
         isError: false
       };
     case "FETCH_SUCCESS":
-
       return {
         ...state,
         isLoading: false,
@@ -83,7 +83,6 @@ const dataFetchReducer = (state, action) => {
         data: action.payload
       };
     case "FETCH_FAILURE":
-
       return {
         ...state,
         isLoading: false,
@@ -256,18 +255,30 @@ function App() {
         </Col>
       </Row>
 
-      {isError && <div><h3>Something went wrong ...</h3></div>}
+      {isError &&
+      <Row>
+        <Col align={'center'}>
+          <Image src="./calcifer.png" style={{width:"75px"}}/><h3>Something went wrong ...</h3>
+        </Col>
+      </Row>
+      }
 
-      {/*{data.length===0 && <div><h3>No matches to your search ...</h3></div>}*/}
+      {isLoading  ? (
 
-      {isLoading ? (
         <Row>
           <Col align={'center'}>
             <Spinner className="spinner" size="lg" animation="grow" variant="secondary" role="status"/>
           </Col>
         </Row>
-      ) : data.length === 0 ? (
-        <div><h3>No matches to your search ...</h3></div>
+
+      ) : data.length === 0 && !isError ? (
+
+          <Row>
+            <Col align={'center'}>
+              <Image src="./no-face.png"/><h3>No matches to your search ...</h3>
+            </Col>
+          </Row>
+
       ) : (
 
         data.map(movie => (
