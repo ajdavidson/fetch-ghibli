@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="./demo.png" alt="Fetch Ghibli" />
+  <img src="img/demo.png" alt="Fetch Ghibli" />
 
   &#xa0;
 

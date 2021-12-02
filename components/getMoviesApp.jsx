@@ -44,10 +44,10 @@ function App() {
 
       <Row>
         <Col sm={6} lg={6}>
-          <Image src="./Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px", width: "365px"}}/>
+          <Image src="./img/Studio_Ghibli_logo.png" fluid style={{marginBottom: "10px", width: "365px"}}/>
         </Col>
         <Col sm={6} lg={6}>
-          <Image src="./sprites.png" style={{marginBottom: "10px", width: "50%"}} align={"right"}/>
+          <Image src="./img/sprites.png" style={{marginBottom: "10px", width: "50%"}} align={"right"}/>
         </Col>
       </Row>
 
@@ -99,7 +99,7 @@ function App() {
       {isError &&
       <Row>
         <Col align={'center'}>
-          <Image src="./calcifer.png" style={{width: "75px"}}/><h3>Something went wrong ...</h3>
+          <Image src="./img/calcifer.png" style={{width: "75px"}}/><h3>Something went wrong ...</h3>
         </Col>
       </Row>
       }
@@ -116,7 +116,7 @@ function App() {
 
         <Row>
           <Col align={'center'}>
-            <Image src="./no-face.png"/><h3>No matches to your search ...</h3>
+            <Image src="./img/no-face.png"/><h3>No matches to your search ...</h3>
           </Col>
         </Row>
 
@@ -145,7 +145,7 @@ function App() {
                     <ListGroupItem><i className="fas fa-calendar-alt"/> {movie.release_date}</ListGroupItem>
                     <ListGroupItem>
                       <Image
-                        src={movie.rt_score < 70 ? 'rt-sp.png' : movie.rt_score < 90 ? 'rt-f.png' : 'rt-cf.png'}
+                        src={movie.rt_score < 70 ? 'img/rt-sp.png' : movie.rt_score < 90 ? 'img/rt-f.png' : 'img/rt-cf.png'}
                         width="25px"
                       /> {' ' + movie.rt_score}%
                     </ListGroupItem>
