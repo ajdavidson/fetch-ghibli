@@ -1,97 +1,4 @@
-const useDataApi = (initialUrl, initialData, query) => {
-  const {useState, useEffect, useReducer} = React;
-
-  const [url, setUrl] = useState(initialUrl);
-  const [state, dispatch] = useReducer(dataFetchReducer, {
-    isLoading: false,
-    isError: false,
-    data: initialData
-  });
-
-  useEffect(() => {
-    let didCancel = false;
-    const fetchData = async () => {
-      dispatch({type: "FETCH_INIT"});
-      try {
-        const result = await axios(url);
-        if (!didCancel) {
-          console.log(result.status);
-          console.log(result.statusText);
-          console.log(result.headers);
-          console.log(result.config);
-          console.log(result.data);
-          console.log("...Fetching done");
-
-          // Fuse it!
-          const options = {
-            shouldSort: false,
-            matchAllTokens: true,
-            findAllMatches: true,
-            includeScore: true,
-            threshold: 0.2,
-            location: 0,
-            distance: 100,
-            maxPatternLength: 32,
-            minMatchCharLength: 1,
-            useExtendedSearch: true,
-            keys: [
-              "title"
-            ]
-          };
-
-          const fuse = new Fuse(result.data, options);
-          const resFuse = fuse.search(query);
-          console.log(resFuse);
-          if (resFuse.length === 0) console.log('Empty Search');
-          const fuseResults = resFuse.map(t => t.item);
-          console.log({fuseResults})
-          //////////////////////////////////////////
-          if (query) {
-            dispatch({type: "FETCH_SUCCESS", payload: fuseResults});
-          } else {
-            dispatch({type: "FETCH_SUCCESS", payload: result.data});
-          }
-
-        }
-      } catch (error) {
-        if (!didCancel) {
-          console.log(error)
-          dispatch({type: "FETCH_FAILURE"});
-        }
-      }
-    };
-    fetchData();
-    return () => {
-      didCancel = true;
-    };
-  }, [query]);
-  return [state, setUrl];
-};
-const dataFetchReducer = (state, action) => {
-  switch (action.type) {
-    case "FETCH_INIT":
-      return {
-        ...state,
-        isLoading: true,
-        isError: false
-      };
-    case "FETCH_SUCCESS":
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        data: action.payload
-      };
-    case "FETCH_FAILURE":
-      return {
-        ...state,
-        isLoading: false,
-        isError: true
-      };
-    default:
-      throw new Error();
-  }
-};
+<DataApi/>
 
 function App() {
   const {useState} = React;
@@ -113,13 +20,10 @@ function App() {
     Spinner,
     FormControl,
     InputGroup,
-    Form,
-    Popover,
-    OverlayTrigger,
-    Table
+    Form
   } = ReactBootstrap;
   // the call to dataAPI
-  const [{data, isLoading, isError}, doFetch] = useDataApi(
+  const [{data, isLoading, isError}, doFetch] = DataApi(
     "https://ghibliapi.herokuapp.com/films/", [], query
   );
 
@@ -184,86 +88,22 @@ function App() {
           </Form>
         </Col>
         <Col sm={6} lg={{span: 2, offset: 2}} align={"right"}>
-          {/*{['top', 'right', 'bottom', 'left'].map((placement) => (*/}
-          {['bottom'].map((placement) => (
-            <OverlayTrigger
-              trigger="click"
-              key={placement}
-              placement={placement}
-              overlay={
-                <Popover id={`popover-positioned-${placement}`}>
-                  <Popover.Header align={"center"}><b>Advanced Search Tokens</b></Popover.Header>
-                  <Popover.Body>
-                    <Table striped bordered hover>
-                      <thead>
-                      <tr>
-                        <th>Token</th>
-                        <th>Match type</th>
-                        <th>Description</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>entry</td>
-                        <td>fuzzy-match</td>
-                        <td>Items that fuzzy match entry</td>
-                      </tr>
-                      <tr>
-                        <td>=entry</td>
-                        <td>exact-match</td>
-                        <td>Items that are entry</td>
-                      </tr>
-                      <tr>
-                        <td>'entry</td>
-                        <td>include-match</td>
-                        <td>Items that include entry</td>
-                      </tr>
-                      <tr>
-                        <td>!entry</td>
-                        <td>inverse-exact-match</td>
-                        <td>Items that do not include entry</td>
-                      </tr>
-                      <tr>
-                        <td>^entry</td>
-                        <td>prefix-exact-match</td>
-                        <td>Items that start with entry</td>
-                      </tr>
-                      <tr>
-                        <td>!^entry</td>
-                        <td>inverse-prefix-exact-match</td>
-                        <td>Items that do not start with entry</td>
-                      </tr>
-                      <tr>
-                        <td>entry$</td>
-                        <td>suffix-exact-match</td>
-                        <td>Items that end with entry</td>
-                      </tr>
-                      <tr>
-                        <td>!entry$</td>
-                        <td>inverse-suffix-exact-match</td>
-                        <td>Items that do not end with entry</td>
-                      </tr>
-                      </tbody>
-                    </Table>
-                  </Popover.Body>
-                </Popover>
-              }
-            >
-              <Button variant="secondary"><i className="fas fa-info-circle fa-2x"/></Button>
-            </OverlayTrigger>
-          ))}
+
+          {/* PopSearch Component: Advanced Search Tokens Table */}
+          <PopSearch/>
+
         </Col>
       </Row>
 
       {isError &&
       <Row>
         <Col align={'center'}>
-          <Image src="./calcifer.png" style={{width:"75px"}}/><h3>Something went wrong ...</h3>
+          <Image src="./calcifer.png" style={{width: "75px"}}/><h3>Something went wrong ...</h3>
         </Col>
       </Row>
       }
 
-      {isLoading  ? (
+      {isLoading ? (
 
         <Row>
           <Col align={'center'}>
@@ -273,11 +113,11 @@ function App() {
 
       ) : data.length === 0 && !isError ? (
 
-          <Row>
-            <Col align={'center'}>
-              <Image src="./no-face.png"/><h3>No matches to your search ...</h3>
-            </Col>
-          </Row>
+        <Row>
+          <Col align={'center'}>
+            <Image src="./no-face.png"/><h3>No matches to your search ...</h3>
+          </Col>
+        </Row>
 
       ) : (
 
