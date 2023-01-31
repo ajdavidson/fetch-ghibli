@@ -25,7 +25,8 @@ function App() {
   } = ReactBootstrap;
   // the call to dataAPI
   const [{data, isLoading, isError}, doFetch] = DataApi(
-    "https://ghibliapi.herokuapp.com/films/", [], query
+    //"https://ghibliapi.herokuapp.com/films/", [], query
+  "./data.json", [], query
   );
 
   const handleClose = () => setShow(false);
@@ -68,8 +69,8 @@ function App() {
         <Col sm={{span: 12, order: 'first'}} lg={4}>
           <Form
             onSubmit={event => {
-              doFetch(`https://ghibliapi.herokuapp.com/films`, query);
-
+              // doFetch(`https://ghibliapi.herokuapp.com/films`, query);
+              doFetch(`./data.json`, query);
               event.preventDefault();
             }}
           >

@@ -31,11 +31,11 @@ function PopSearch() {
                 <td>fuzzy-match</td>
                 <td>Items that fuzzy match entry</td>
               </tr>
-              <tr>
-                <td>=entry</td>
-                <td>exact-match</td>
-                <td>Items that are entry</td>
-              </tr>
+              {/*<tr>*/}
+              {/*  <td>=entry</td>*/}
+              {/*  <td>exact-match</td>*/}
+              {/*  <td>Items that are entry</td>*/}
+              {/*</tr>*/}
               <tr>
                 <td>'entry</td>
                 <td>include-match</td>
