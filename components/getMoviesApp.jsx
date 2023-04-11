@@ -54,17 +54,29 @@ function App() {
 
       <Row>
         <Col sm={6} lg={{span: 4, order: 'first'}} align={"left"}>
-          <Dropdown drop="end">
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              <i className="fas fa-film fa-2x"/>
-            </Dropdown.Toggle>
+          {/*<Dropdown drop="end">*/}
+          {/*  <Dropdown.Toggle variant="secondary" id="dropdown-basic">*/}
+          {/*    <i className="fas fa-film fa-2x"/>*/}
+          {/*  </Dropdown.Toggle>*/}
 
-            <Dropdown.Menu>
+          {/*  <Dropdown.Menu>*/}
+          {/*    {data.map(title => (*/}
+          {/*      <Dropdown.Item value={title.title} href={'#' + title.id}>{title.title}</Dropdown.Item>*/}
+          {/*    ))}*/}
+          {/*  </Dropdown.Menu>*/}
+          {/*</Dropdown>*/}
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-expanded="false">
+              <i className="fas fa-film fa-2x"/>
+            </button>
+            <div className="dropdown-menu">
               {data.map(title => (
-                <Dropdown.Item value={title.title} href={'#' + title.id}>{title.title}</Dropdown.Item>
+                <a className="dropdown-item" value={title.title} href={'#' + title.id}>{title.title}</a>
               ))}
-            </Dropdown.Menu>
-          </Dropdown>
+
+            </div>
+          </div>
         </Col>
         <Col sm={{span: 12, order: 'first'}} lg={4}>
           <Form
